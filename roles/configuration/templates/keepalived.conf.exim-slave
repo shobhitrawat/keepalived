@@ -5,7 +5,7 @@ global_defs {
 }
 
 vrrp_script chk_exim {
-        script  "/etc/keepalived/scripts/nginx/checkport.sh 25"
+        script  "/etc/keepalived/scripts/checkport.sh 25"
         interval 5
         timeout 5
         fall 3
