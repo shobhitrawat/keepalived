@@ -4,7 +4,7 @@
    become: true
    become_method: sudo
    vars_files:
-     - vars/role.yml
+     - role.yml
 
    roles:
       - installation
