@@ -1,5 +1,6 @@
 ---
  - name: Keepalived Configuration Files
+   vars_from: "Master"
    template:
      src: keepalived.conf.exim-master
      dest: /etc/keepalived/keepalived.conf
@@ -11,6 +12,7 @@
 
    
  - name: Keepalived Configuration Files
+   vars_from: "Slave"
    template:
      src: keepalived.conf.exim-slave
      dest: /etc/keepalived/keepalived.conf
