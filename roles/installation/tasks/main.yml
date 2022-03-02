@@ -1,0 +1,24 @@
+---
+
+- name: install dependent packages
+  apt:
+    update_cache: yes
+    pkg:
+    - tcptraceroute
+    - bc
+    - curl
+    - openssl*
+    - libssl-dev
+
+- name: Install Keepalived
+  shell: |
+     wget http://keepalived.org/software/keepalived-2.2.7.tar.gz
+     tar -xvf keepalived-2.2.7.tar.gz
+     cd keepalived-2.2.7
+     ./configure --prefix=/usr/local/keepalived
+     make && make install
+     cp /usr/local/keepalived/sbin/keepalived /usr/sbin/.
+     cp -r keepalived/keepalived.service /lib/systemd/system/.
+     systemctl enable keepalived
+     mkdir -p /etc/keepalived/scripts
+     wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping && chmod 755 /usr/bin/tcping    

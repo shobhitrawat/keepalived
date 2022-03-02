@@ -1,0 +1,22 @@
+ - name: Keepalived Configuration Files
+   template:
+     src: keepalived.conf.exim-master
+     dest: /etc/keepalived/keepalived.conf
+     owner: root
+     group: root
+     mode: 0644
+   when: component == "master"
+
+ - name: Keepalived Configuration Files
+   template:
+     src: checkport.sh.exim
+     dest: /etc/keepalived/scripts/checkport.sh
+     owner: root
+     group: root
+     mode: 0644
+   when: component == "slave"
+
+ - name: Install Keepalived
+   shell: |
+    sudo systemctl restart keepalived
+

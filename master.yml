@@ -1,0 +1,9 @@
+---
+
+ - hosts: mygroup
+   become: true
+   become_method: sudo
+   
+   roles:
+      - installation
+      - configuration

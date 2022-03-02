@@ -1,0 +1,2 @@
+[mygroup]
+192.168.13.61 ansible_ssh_user=root
