@@ -7,7 +7,7 @@
       group: root
       mode: 0644
     when:
-      - 'role == "Master"'
+      - 'role == "master"'
 
    
   - name: Keepalived Configuration Files
@@ -18,7 +18,7 @@
       group: root
       mode: 0644
     when:
-      - 'role == "Slave"'
+      - 'role == "slave"'
 
   - name: Keepalived Configuration Files
     template:
