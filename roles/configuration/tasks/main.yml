@@ -1,11 +1,12 @@
-- name: Keepalived Configuration Files
-  template:
+---
+ - name: Keepalived Configuration Files
+   template:
      src: keepalived.conf.exim-master
      dest: /etc/keepalived/keepalived.conf
      owner: root
      group: root
      mode: 0644
-  when: 'role == "master"'
+   when: 'role == "master"'
 
  - name: Keepalived Configuration Files
    template:
