@@ -6,7 +6,7 @@
      owner: root
      group: root
      mode: 0644
-   when: 'role == "master"'
+   when: 'Role == "Master"'
    
  - name: Keepalived Configuration Files
    template:
@@ -15,7 +15,7 @@
      owner: root
      group: root
      mode: 0644
-   when: 'role == "slave"'
+   when: 'Role == "Slave"'
 
  - name: Keepalived Configuration Files
    template:
