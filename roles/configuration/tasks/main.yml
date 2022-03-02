@@ -1,36 +1,36 @@
 ---
- - name: Keepalived Configuration Files
-   vars_from: "Master"
-   template:
-     src: keepalived.conf.exim-master
-     dest: /etc/keepalived/keepalived.conf
-     owner: root
-     group: root
-     mode: 0644
-   when:
-     - 'role == "Master"'
+  - name: Keepalived Configuration Files
+    vars_from: "Master"
+    template:
+      src: keepalived.conf.exim-master
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "Master"'
 
    
- - name: Keepalived Configuration Files
-   vars_from: "Slave"
-   template:
-     src: keepalived.conf.exim-slave
-     dest: /etc/keepalived/keepalived.conf
-     owner: root
-     group: root
-     mode: 0644
-   when:
-     - 'role == "Slave"'
+  - name: Keepalived Configuration Files
+    vars_from: "Slave"
+    template:
+      src: keepalived.conf.exim-slave
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "Slave"'
 
- - name: Keepalived Configuration Files
-   template:
-     src: checkport.sh.exim
-     dest: /etc/keepalived/scripts/checkport.sh
-     owner: root
-     group: root
-     mode: 0644
+  - name: Keepalived Configuration Files
+    template:
+      src: checkport.sh.exim
+      dest: /etc/keepalived/scripts/checkport.sh
+      owner: root
+      group: root
+      mode: 0644
 
- - name: Install Keepalived
-   shell: |
-    sudo systemctl restart keepalived
+  - name: Install Keepalived
+    shell: |
+     sudo systemctl restart keepalived
 
