@@ -43,13 +43,13 @@
 
   - name: Keepalived Configuration Files
     template:
-      src: checkport.sh.exim
+      src: checkport.sh
       dest: /etc/keepalived/scripts/checkport.sh
       owner: root
       group: root
       mode: 0644
     when:
-      - 'service == "nginx" and service == "exim"'
+      - 'service == "nginx" or service == "exim"'
       
 
   - name: Install Keepalived
