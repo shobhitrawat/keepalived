@@ -1,5 +1,5 @@
 - name: Keepalived Configuration Files
-   template:
+  template:
      src: keepalived.conf.exim-master
      dest: /etc/keepalived/keepalived.conf
      owner: root
