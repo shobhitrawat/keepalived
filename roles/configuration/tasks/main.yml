@@ -1,5 +1,5 @@
 ---
-  - name: Keepalived Configuration Files
+  - name: Keepalived Configuration Files for Exim
     template:
       src: keepalived.conf.exim-master
       dest: /etc/keepalived/keepalived.conf
@@ -10,7 +10,7 @@
       - 'role == "master" and service == "exim"'
 
    
-  - name: Keepalived Configuration Files
+  - name: Keepalived Configuration Files for Exim
     template:
       src: keepalived.conf.exim-slave
       dest: /etc/keepalived/keepalived.conf
@@ -18,7 +18,28 @@
       group: root
       mode: 0644
     when:
-      - 'role == "master" and service == "exim"'
+      - 'role == "slave" and service == "exim"'
+    
+  - name: Keepalived Configuration Files for Nginx
+    template:
+      src: keepalived.conf.nginx-master
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "master" and service == "nginx"'
+
+   
+  - name: Keepalived Configuration Files for Nginx
+    template:
+      src: keepalived.conf.nginx-slave
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "slave" and service == "nginx"'    
 
   - name: Keepalived Configuration Files
     template:
