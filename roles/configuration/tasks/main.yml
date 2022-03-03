@@ -43,14 +43,14 @@
 
   - name: Keepalived Configuration Files
     template:
-      src: checkport.sh.exim
+      src: checkport.sh
       dest: /etc/keepalived/scripts/checkport.sh
       owner: root
       group: root
       mode: 0644
     when:
       - 'service == "nginx" or service == "exim"'
-
+      
   - name: Keepalived Configuration Files for Redis
     template:
       src: keepalived.conf.redis-master
@@ -76,13 +76,13 @@
       src: "{{ item.src }}"
       dest: /etc/keepalived/scripts/
     loop:
-      - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_slave.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_stop.sh', dest: '/etc/keepalived/scripts/' }
+       - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
+       - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
+       - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
+       - { src: 'redis_slave.sh', dest: '/etc/keepalived/scripts/' }
+       - { src: 'redis_stop.sh', dest: '/etc/keepalived/scripts/' }
     when:
-      - 'service == "redis"'
+       - 'service == "redis"'
       
 
   - name: Install Keepalived
