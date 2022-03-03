@@ -75,7 +75,7 @@
     template:  
       src: "{{ item.src }}"
       dest: /etc/keepalived/scripts/
-    loop:
+      loop:
        - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
        - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
        - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
