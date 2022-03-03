@@ -21,4 +21,5 @@
      cp -r keepalived/keepalived.service /lib/systemd/system/.
      systemctl enable keepalived
      mkdir -p /etc/keepalived/scripts
-     wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping && chmod 755 /usr/bin/tcping    
+     wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping && chmod 755 /usr/bin/tcping
+     rm -rf keepalived-2.2.7*
