@@ -72,7 +72,11 @@
       - 'role == "slave" and service == "redis"'
 
   - name: Keepalived Configuration Files for Redis
-    command: ./roles/configuration/templates/scripts /etc/keepalived/scripts/.
+    shell: |
+      mkdir /etc/keepalived/scripts/redis-7500
+    template:  
+      src: "scripts/redis-7500/redis_*"
+      dest: /etc/keepalived/scripts/7500/ 
     when:
       - 'service == "redis"'
       
