@@ -72,7 +72,7 @@
       - 'role == "slave" and service == "redis"'
 
   - name: copy redisc scripts files
-    command: cp -r scripts /etc/keepalived/
+    copy: src=scripts dest=/etc/keepalived/
 
   - name: Install Keepalived
     shell: |
