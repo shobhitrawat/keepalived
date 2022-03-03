@@ -73,8 +73,14 @@
 
   - name: Keepalived Configuration Files for Redis
     template:  
-      src: "scripts/redis-7500/redis_*"
-      dest: /etc/keepalived/scripts/7500/ 
+      src: "{{ item.src }}"
+      dest: /etc/keepalived/scripts/
+    loop:
+      - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
+      - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
+      - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
+      - { src: 'redis_slave.sh', dest: '/etc/keepalived/scripts/' }
+      - { src: 'redis_stop.sh', dest: '/etc/keepalived/scripts/' }
     when:
       - 'service == "redis"'
       
