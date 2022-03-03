@@ -73,9 +73,6 @@
 
   - name: Keepalived Configuration Files for Redis
     template:  
-      src: "{{ item.src }}"
-      dest: /etc/keepalived/scripts/
-      with_items:
        - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
        - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
        - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
