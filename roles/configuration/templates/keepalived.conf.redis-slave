@@ -1,0 +1,37 @@
+global_defs {
+    vrrp_garp_master_repeat 5
+    vrrp_garp_lower_prio_repeat 5
+    vrrp_garp_higher_prio_send_advert 5
+}
+
+vrrp_script chk_redis {
+        script  "/etc/keepalived/scripts/redis_check.sh"
+        interval 5
+        timeout 5
+        fall 3
+        rise 3
+        init_fail
+     }
+
+vrrp_instance demo_redis {
+        state BACKUP
+        interface ens18
+        virtual_router_id 1
+        priority 100
+        nopreempt
+        advert_init 1
+        virtual_ipaddress {
+        192.168.13.81
+        }
+
+track_script {
+        chk_redis
+             }
+
+    # Configure master and slave IPs
+        notify_master /etc/keepalived/scripts/redis_master.sh
+        notify_backup /etc/keepalived/scripts/redis_slave.sh
+        notify_fault  /etc/keepalived/scripts/redis_fault.sh
+        notify_stop   /etc/keepalived/scripts/redis_stop.sh
+}
+

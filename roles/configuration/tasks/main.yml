@@ -43,13 +43,43 @@
 
   - name: Keepalived Configuration Files
     template:
-      src: checkport.sh
+      src: checkport.sh.exim
       dest: /etc/keepalived/scripts/checkport.sh
       owner: root
       group: root
       mode: 0644
     when:
       - 'service == "nginx" or service == "exim"'
+
+  - name: Keepalived Configuration Files for Redis
+    template:
+      src: keepalived.conf.redis-master
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "master" and service == "redis"'
+
+  - name: Keepalived Configuration Files for Redis
+    template:
+      src: keepalived.conf.redis-slave
+      dest: /etc/keepalived/keepalived.conf
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "slave" and service == "redis"'
+
+  - name: Keepalived Configuration Files for Redis
+    template:
+      src: scripts
+      dest: /etc/keepalived/
+      owner: root
+      group: root
+      mode: 0644
+    when:
+      - 'role == "redis"'
       
 
   - name: Install Keepalived
