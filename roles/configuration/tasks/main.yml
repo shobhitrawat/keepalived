@@ -73,6 +73,8 @@
 
   - name: copy redisc scripts files
     copy: src=/var/lib/jenkins/workspace/Keepalived/roles/configuration/templates/scripts/ dest=/etc/keepalived/ directory_mode=yes
+    when:
+      - 'service == "redis"'
 
   - name: Install Keepalived
     shell: |
