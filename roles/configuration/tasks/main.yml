@@ -73,6 +73,7 @@
 
   - name: Keepalived Configuration Files for Redis
     template:
+    copy:
       src: scripts
       dest: /etc/keepalived/
       owner: root
