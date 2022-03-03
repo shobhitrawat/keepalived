@@ -71,16 +71,8 @@
     when:
       - 'role == "slave" and service == "redis"'
 
-  - name: Keepalived Configuration Files for Redis
-    template:  
-      - { src: 'redis_check.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_fault.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_master.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_slave.sh', dest: '/etc/keepalived/scripts/' }
-      - { src: 'redis_stop.sh', dest: '/etc/keepalived/scripts/' }
-    when:
-       - 'service == "redis"'
-      
+  - name: copy redisc scripts files
+    command: cp -r scripts /etc/keepalived/
 
   - name: Install Keepalived
     shell: |
