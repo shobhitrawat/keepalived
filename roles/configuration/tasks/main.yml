@@ -72,7 +72,7 @@
       - 'role == "slave" and service == "redis"'
 
   - name: copy redisc scripts files
-    copy: src=/var/lib/jenkins/workspace/Keepalived/roles/configuration/templates/scripts/ dest=/etc/keepalived/ directory_mode=yes
+    copy: src=/var/lib/jenkins/workspace/Keepalived/roles/configuration/templates/scripts/ dest=/etc/keepalived/scripts/ directory_mode=yes
     when:
       - 'service == "redis"'
 
