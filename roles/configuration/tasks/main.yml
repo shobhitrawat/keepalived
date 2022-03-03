@@ -72,12 +72,7 @@
       - 'role == "slave" and service == "redis"'
 
   - name: Keepalived Configuration Files for Redis
-    template:
-      src: scripts*
-      dest: /etc/keepalived/scripts/
-      owner: root
-      group: root
-      mode: 0644
+    command: cp -r /var/lib/jenkins/workspace/Keepalived/roles/configuration/templates/scripts /etc/keepalived/scripts/.
     when:
       - 'service == "redis"'
       
