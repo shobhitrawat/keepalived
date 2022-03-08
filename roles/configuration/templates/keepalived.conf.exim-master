@@ -22,7 +22,7 @@ vrrp_instance exim_ha {
         advert_init 1
 
         virtual_ipaddress {
-        192.168.13.81
+        {{ virtual_id }}
         }
 
 track_script {
